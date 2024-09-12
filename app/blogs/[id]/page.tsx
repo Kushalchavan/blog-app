@@ -1,6 +1,7 @@
 "use client";
-import { assets, blog_data } from "@/assets/assets";
+import { assets } from "@/assets/assets";
 import Footer from "@/components/Footer";
+import axios from "axios";
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -14,19 +15,25 @@ interface BlogData {
   date: number;
   category: string;
   author: string;
-  author_img: StaticImageData;
+  authorImg: StaticImageData;
 }
 
 const BlogPage = () => {
   const [data, setData] = useState<BlogData | null>(null);
 
   const params = useParams();
-  const id = Number(params?.id);
+  const id = params?.id;
 
-  const fetchBlogData = () => {
-    const blogItem = blog_data.find((item) => item.id === id);
-    if (blogItem) {
-      setData(blogItem);
+  const fetchBlogData = async () => {
+    try {
+      const response = await axios.get("/api/blog", {
+        params: {
+          id,
+        },
+      });
+      setData(response.data);
+    } catch (error) {
+      console.error("Error fetching blog data: ", error);
     }
   };
 
@@ -58,12 +65,14 @@ const BlogPage = () => {
           </h1>
           <Image
             className="mx-auto mt-6 border border-white rounded-full"
-            src={data.author_img}
+            src={data.authorImg}
             alt="author image"
             width={60}
             height={60}
           />
-          <p className="mt-1 pb-2 text-lg max-w-[740px] mx-auto">{data.author}</p>
+          <p className="mt-1 pb-2 text-lg max-w-[740px] mx-auto">
+            {data.author}
+          </p>
         </div>
       </div>
 
