@@ -1,8 +1,26 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import { assets } from "@/assets/assets";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const Header = () => {
+  const [email, setEmail] = useState("");
+
+  const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("email", email);
+    const response = await axios.post("/api/email", formData);
+
+    if (response.data.success) {
+      toast.success(response.data.message);
+      setEmail("")
+    } else {
+      toast.error("Error");
+    }
+  };
+
   return (
     <div className="p-5 md:px-12 lg:px-28">
       <div className="flex justify-between items-center">
@@ -23,13 +41,21 @@ const Header = () => {
           debitis, doloremque fugit quis illo odio eveniet deserunt, animi vel
           unde, consequuntur voluptatem repellendus quam.
         </p>
-        <form className="flex justify-between max-w-[500px] scale-75 sm:scale-100 mx-auto mt-10 border border-black shadow-custom-shadow">
+        <form
+          onSubmit={onSubmitHandler}
+          className="flex justify-between max-w-[500px] scale-75 sm:scale-100 mx-auto mt-10 border border-black shadow-custom-shadow"
+        >
           <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
             type="email"
             placeholder="Enter your email"
             className="pl-4 outline-none"
           />
-          <button type="submit" className="border-l border-black p-4 sm:px-8 active:bg-gray-600 active:text-white">
+          <button
+            type="submit"
+            className="border-l border-black p-4 sm:px-8 active:bg-gray-600 active:text-white"
+          >
             Subscribe
           </button>
         </form>
