@@ -13,7 +13,7 @@ const Sidebar = () => {
         <div className="w-[50%] sm:w-[80%] absolute right-0">
           <Link
             href="/admin/addProduct"
-            className="flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow"
+            className="flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow mr-5"
           >
             <Image src={assets.add_icon} alt="icon" width={28} />
             <p> Add blogs</p>
@@ -21,7 +21,7 @@ const Sidebar = () => {
 
           <Link
             href="/admin/blogList"
-            className="mt-5 flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow"
+            className="mt-5 flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow mr-5"
           >
             <Image src={assets.blog_icon} alt="icon" width={28} />
             <p> Blog lists</p>
@@ -29,7 +29,7 @@ const Sidebar = () => {
 
           <Link
             href="/admin/subscriptions"
-            className="mt-5 flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow"
+            className="mt-5 flex items-center border border-black gap-8 font-medium px-3 py-2 bg-white  shadow-custom-shadow mr-5"
           >
             <Image src={assets.email_icon} alt="icon" width={28} />
             <p> Subscriptions</p>

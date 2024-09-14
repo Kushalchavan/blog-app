@@ -17,7 +17,7 @@ const page = () => {
 
   const fetchBlogs = async () => {
     try {
-      const response = await axios.get("api/blog");
+      const response = await axios.get("/api/blog");
       setBlogs(response.data.blogs);
     } catch (error) {
       console.error("Error fetching blogs", error);
@@ -65,8 +65,8 @@ const page = () => {
             </tr>
           </thead>
           <tbody>
-            {blogs.map((item) => {
-              return (
+            {Array.isArray(blogs) && blogs.length > 0 ? (
+              blogs.map((item) => (
                 <BlogTableItem
                   key={item._id}
                   mongoId={item._id}
@@ -74,10 +74,16 @@ const page = () => {
                   author={item.author}
                   authorImg={item.authorImg}
                   date={new Date(item.date)}
-                  delteBlog={deleteBlog}
+                  deleteBlog={deleteBlog}
                 />
-              );
-            })}
+              ))
+            ) : (
+              <tr>
+                <td colSpan={4} className="text-center py-4">
+                  No blogs found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { assets } from "@/assets/assets";
 import axios from "axios";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const Header = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Header = () => {
 
     if (response.data.success) {
       toast.success(response.data.message);
-      setEmail("")
+      setEmail("");
     } else {
       toast.error("Error");
     }
@@ -30,9 +31,11 @@ const Header = () => {
           width={180}
           className="w-[130px] sm:w-auto"
         />
-        <button className="flex items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid border-black shadow-custom-shadow">
-          Get Started <Image src={assets.arrow} alt="arrow image" />
-        </button>
+        <Link href="/admin">
+          <button className="flex items-center gap-2 font-medium py-1 px-3 sm:py-3 sm:px-6 border border-solid border-black shadow-custom-shadow">
+            Get Started <Image src={assets.arrow} alt="arrow image" />
+          </button>
+        </Link>
       </div>
       <div className="text-center my-8">
         <h1 className="text-3xl sm:text-5xl font-medium">Latest Blogs</h1>

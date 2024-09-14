@@ -8,7 +8,7 @@ interface Props {
   author: string;
   authorImg: StaticImageData | string;
   date: Date;
-  deleteBlog: () => void;
+  deleteBlog: (mongoId: string) => Promise<void>;
 }
 
 const BlogTableItem = ({

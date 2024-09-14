@@ -84,57 +84,11 @@ const BlogPage = () => {
           alt="image"
           className="border-4 border-white"
         />
-        <h1 className="py-8 text-[26px] font-semibold">Introduction:</h1>
-        <p>{data.description}</p>
-        <h3 className="my-5 text-[28px] font-semibold">
-          Step 1: Self-Reflection and Goal Setting
-        </h3>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          eaque ut laboriosam, facere nostrum sed non dicta tenetur unde id ab
-          temporibus explicabo beatae rerum.
-        </p>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aut
-          nostrum recusandae ut quod veniam nulla hic eaque ex quo obcaecati,
-          quae, officia accusamus dolorem rem sed. Pariatur, animi iusto.
-        </p>
-        <h3 className="my-5 text-[28px] font-semibold">
-          Step 2: Self-Reflection and Goal Setting
-        </h3>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          eaque ut laboriosam, facere nostrum sed non dicta tenetur unde id ab
-          temporibus explicabo beatae rerum.
-        </p>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aut
-          nostrum recusandae ut quod veniam nulla hic eaque ex quo obcaecati,
-          quae, officia accusamus dolorem rem sed. Pariatur, animi iusto.
-        </p>
-        <h3 className="my-5 text-[28px] font-semibold">
-          Step 3: Self-Reflection and Goal Setting
-        </h3>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
-          eaque ut laboriosam, facere nostrum sed non dicta tenetur unde id ab
-          temporibus explicabo beatae rerum.
-        </p>
-        <p className="my-3">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus aut
-          nostrum recusandae ut quod veniam nulla hic eaque ex quo obcaecati,
-          quae, officia accusamus dolorem rem sed. Pariatur, animi iusto.
-        </p>
+        <div
+          className="blog-content"
+          dangerouslySetInnerHTML={{ __html: data.description }}
+        ></div>
 
-        <h3 className="my-5 text-[28px] font-semibold">Conclusion:</h3>
-        <p className="my-3">
-          Managing your lifestyle is journey that requires and self-awareness.
-          by following this step-by-step guide, you can take control of you life
-          make meaningful changes that lead to a more balanced and fullfiling
-          lifestyle. Remember that it's okay to seek support and guidance from
-          professionals or mentor along the way you well-being and happines are
-          worth the effort.
-        </p>
         <div className="my-24 ">
           <p className="text-black font-semibold my-4">
             Share this articles on social media

@@ -12,10 +12,11 @@ const emailSchema = new Schema<EmailType>({
   },
   date: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
   },
 });
 
-const EmailModel = mongoose.models.email ||  mongoose.model("Email", emailSchema);
+const EmailModel =
+  mongoose.models.Email || mongoose.model<EmailType>("Email", emailSchema);
 
 export default EmailModel;
