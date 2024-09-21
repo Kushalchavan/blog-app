@@ -48,8 +48,8 @@ MONGODB_URL=your_mongodb_connection_string
 
 ```bash
 npm run dev
-Open http://localhost:3000 to view it in your browser.
 ```
+Open http://localhost:3000 to view it in your browser.
 
 
 ## 🎉 Acknowledgements
