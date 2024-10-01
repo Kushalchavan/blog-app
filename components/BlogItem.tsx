@@ -12,7 +12,7 @@ interface Props {
 
 const BlogItem = ({ title, description, category, image, id }: Props) => {
   return (
-    <div className="max-w-[30px] sm:max-w-[300px] bg-white border border-black hover:shadow-custom-shadow transition-shadow duration-300">
+    <div className="max-w-[30px] sm:max-w-[300px] max-sm:max-w-[300px] bg-white border border-black hover:shadow-custom-shadow transition-shadow duration-300">
       <Link href={`/blogs/${id}`}>
         <Image
           src={image}
