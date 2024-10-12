@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import BlogItem from "./BlogItem";
 import axios from "axios";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { StaticImageData } from "next/image";
 
 interface Blog {
@@ -15,14 +17,17 @@ interface Blog {
 const BlogList = () => {
   const [menu, setMenu] = useState("All");
   const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchBlogs = async () => {
     try {
+      setIsLoading(true);
       const response = await axios.get("/api/blog");
       setBlogs(response.data.blogs);
-      console.log(response.data);
+      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching blogs: ", error);
+      setIsLoading(false);
     }
   };
 
@@ -74,21 +79,31 @@ const BlogList = () => {
           Lifestyle
         </button>
       </div>
+
       <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-        {blogs
-          .filter((item) => (menu === "All" ? true : item.category === menu))
-          .map((item, index) => {
-            return (
-              <BlogItem
-                key={index}
-                image={item.image}
-                category={item.category}
-                title={item.title}
-                description={item.description}
-                id={item._id}
-              />
-            );
-          })}
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, index) => (
+              <div key={index} className="w-64 p-4">
+                <Skeleton height={250} width={250} />
+                <Skeleton count={3} width={250} style={{ marginTop: "15px" }} />
+              </div>
+            ))
+          : blogs
+              .filter((item) =>
+                menu === "All" ? true : item.category === menu
+              )
+              .map((item, index) => {
+                return (
+                  <BlogItem
+                    key={index}
+                    image={item.image}
+                    category={item.category}
+                    title={item.title}
+                    description={item.description}
+                    id={item._id}
+                  />
+                );
+              })}
       </div>
     </div>
   );
